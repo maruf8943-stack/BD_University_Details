@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bangladesh Universities</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #333; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        a { color: blue; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<h1>Bangladesh University Directory</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Recognized</th>
+        <th>RANK</th>
+        <th>Rank in world</th>
+        <th>Score</th>
+        <th>Region Asia</th>
+        <th>Website</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Location</th>
+    </tr>
+
+    {% for u in universities %}
+    <tr>
+        <td>{{ u.get("University Name", "") }}</td>
+        <td>{{ u.get("Recognized", "") }}</td>
+        <td>{{ u.get("RANK", "") }}</td>
+        <td>{{ u.get("Rank in world", "") }}</td>
+        <td>{{ u.get("Score", "") }}</td>
+        <td>{{ u.get("region Asia", "") }}</td>
+        <td>
+            {% if u.get("Website") %}
+                <a href="{{ u['Website'] }}" target="_blank">Visit</a>
+            {% else %}
+                N/A
+            {% endif %}
+        </td>
+        <td>{{ u.get("Phone", "") }}</td>
+        <td>{{ u.get("Email", "") }}</td>
+        <td>{{ u.get("Location", "") }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
